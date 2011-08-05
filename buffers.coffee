@@ -80,6 +80,33 @@ buffers =
       y = eq x
       points.push point(x*(width/num/inc) + ox, y*zoom + oy)
             '''
+  callbacks: '''
+    n=10
+    createAxis("100%","100%",40)
+
+    xx = yy = 50
+    ww = hh = 300
+    maxR = 30
+
+    commonAttr =
+      opacity: 0.6
+      "stroke-width": 0
+      "stroke-opacity": 0
+
+    randomAttr = ()->
+      "cx": random() * ww + xx
+      "cy": random() * hh + yy
+      "r" : (random() * 3 + 1) * maxR / 4
+      fill: color = getColor()
+
+    step = (cir,next)-> cir.animate(randomAttr(),(1+2*random())*1000,"<>",next)
+
+    getCallback = (cn)->(()->step(cn,getCallback(cn)))
+
+    for i in [0..n-1]
+      c = circle(xx,yy,0).attr(commonAttr)
+      step(c, getCallback(c))
+          '''
 
 $(document).ready ->
   flipper = (button, panel, showmsg, hidemsg) ->
