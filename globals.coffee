@@ -1,52 +1,53 @@
-paper = Raphael("canvas", "100%", "100%")
-width = "100%"
-height = "100%"
+w = window
+w.paper = Raphael("canvas", "100%", "100%")
+w.width = "100%"
+w.height = "100%"
 c = paper.rect(0, 0, "100%", "100%", 0).attr
   fill: "#efefef"
   stroke: "none"
 Raphael.getColor.reset()
-cwidth = c.getBBox().width
-cheight = c.getBBox().height
+w.cwidth = c.getBBox().width
+w.cheight = c.getBBox().height
 
 # math
-abs = Math.abs
-acos = Math.acos
-asin = Math.asin
-atan = Math.atan
-ceil = Math.ceil
-cos = Math.cos
-exp = Math.exp
-floor = Math.floor
-log = Math.log
-max = Math.max
-min = Math.min
-pi = Math.PI
-pow = Math.pow
-random = Math.random
-round = Math.round
-sin = Math.sin
-sqrt = Math.sqrt
-tan = Math.tan
+w.abs = Math.abs
+w.acos = Math.acos
+w.asin = Math.asin
+w.atan = Math.atan
+w.ceil = Math.ceil
+w.cos = Math.cos
+w.exp = Math.exp
+w.floor = Math.floor
+w.log = Math.log
+w.max = Math.max
+w.min = Math.min
+w.pi = Math.PI
+w.pow = Math.pow
+w.random = Math.random
+w.round = Math.round
+w.sin = Math.sin
+w.sqrt = Math.sqrt
+w.tan = Math.tan
 
 # raphael
-circle = (x,y,r) ->
+w.circle = (x,y,r) ->
   paper.circle(x,y,r)
-rect = (x,y,w,h,r) ->
+w.rect = (x,y,w,h,r) ->
   paper.rect(x,y,w,h,r)
-ellipse = (x,y,rx,ry) ->
+w.ellipse = (x,y,rx,ry) ->
   paper.ellipse(x,y,rx,ry)
-image = (url,x,y,w,h) ->
+w.image = (url,x,y,w,h) ->
   paper.image(url, x, y, w, h)
-text = (x,y,str) ->
+w.text = (x,y,str) ->
   paper.text(x,y,str)
-path = (str) ->
+w.path = (str) ->
   paper.path(str)
-getColor =-> Raphael.getColor()
-set = paper.set
-clear = paper.clear
+w.getColor =-> Raphael.getColor()
+w.set = paper.set
+w.clear = paper.clear
 
 # axis, tics, labels
-createAxis = (width,height,ticwidth) ->
+w.createAxis = (width,height,ticwidth) ->
   if (width == "100%")
     width = cwidth
   if (height == "100%")
@@ -105,7 +106,7 @@ Raphael.el.anim = (obj) ->
   else
     this.animate(obj)
 
-randomPath = (length, j, dotsy) ->
+w.randomPath = (length, j, dotsy) ->
   random_path = ""
   x = 10
   y = 0
